@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: volunteerbridge
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: volunteerbridge
+  template:
+    metadata:
+      labels:
+        app: volunteerbridge
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: volunteerbridge
+          image: 617464676318.dkr.ecr.us-east-1.amazonaws.com/iwuvolunteer:latest
+          ports:
+            - containerPort: 8000
+          env:
+            - name: PORT
+              value: "8000"
+            - name: DATABASE_PATH
+              value: "/app/data/app.db"
+            - name: APP_ENV
+              value: "production"
