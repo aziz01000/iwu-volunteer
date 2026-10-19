@@ -1,0 +1,13 @@
+.env
+.vercel/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.DS_Store
+
+# SQLite is runtime state. The application seeds a new database when needed.
+data/*.db
+!data/.gitkeep
